@@ -1,0 +1,16 @@
+version: '3'
+services:
+  splash:
+    restart: always
+    image: scrapinghub/splash
+    container_name: mysplash
+    ports:
+      - "5023:5023"
+      - "8050:8050"
+      - "8051:8051"
+  docker-scrapy:
+    build: .
+    container_name: myscrapy
+    depends_on:
+      - splash
+    tty: true

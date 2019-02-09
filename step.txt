@@ -1,0 +1,16 @@
+#イメージ作成
+docker build -t docker-scrapy .
+#コンテナ起動とコンテナ内に移動
+//docker run -itd -v ./app:/usr/src/app --name docker-scrapy docker-scrapy
+//なぜがソースが反映されない
+docker run -itd -v --name docker-scrapy docker-scrapy
+docker exec -it docker-scrapy /bin/sh
+#コンテナ内で実行するコマンド
+scrapy crawl google_news_freelance -o results/google_news_freelance.csv
+
+#コンテナの停止と破棄
+docker container stop docker-scrapy
+docker container rm docker-scrapy
+
+Successfully built 6343864dda16
+Successfully tagged docker-scrapy:latest
